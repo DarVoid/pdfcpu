@@ -21,6 +21,9 @@ jobs:
            - '1.23.x'
     runs-on: ubuntu-latest
 
+    env:
+          CI_OFFLINE: "true"
+
     steps:
       - name: Checkout repo      
         uses: actions/checkout@v4
@@ -40,7 +43,7 @@ jobs:
         with:
           flag-name: Go-${{ matrix.go }}
           parallel: true
-
+        
   finish:
     needs: test
     runs-on: ubuntu-latest
